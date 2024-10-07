@@ -3,7 +3,7 @@
 
 <img src="public/icon.png" width="120px">
 
-# Daily Bots Demo
+# Wingmate Agent demo
 
 Example NextJS app that demonstrates core capabilities of [Daily Bots](https://bots.daily.co).
 
