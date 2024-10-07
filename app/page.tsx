@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { LLMHelper } from "realtime-ai";
+import { FunctionCallParams, LLMHelper } from "realtime-ai";
 import { DailyVoiceClient } from "realtime-ai-daily";
 import { VoiceClientAudio, VoiceClientProvider } from "realtime-ai-react";
 
@@ -15,6 +15,8 @@ import {
   defaultConfig,
   defaultServices,
 } from "@/rtvi.config";
+
+import { init, toolsSchema } from "./tools/index";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -32,6 +34,12 @@ export default function Home() {
       timeout: BOT_READY_TIMEOUT,
     });
     const llmHelper = new LLMHelper({});
+    console.log(toolsSchema)
+    init(llmHelper)
+    // llmHelper.handleFunctionCall(async (fn: FunctionCallParams) => {
+    //    init(llmHelper)
+    // });
+
     voiceClient.registerHelper("llm", llmHelper);
 
     voiceClientRef.current = voiceClient;

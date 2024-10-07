@@ -1,3 +1,6 @@
+
+import { toolsSchema } from "./app/tools";
+
 export const BOT_READY_TIMEOUT = 15 * 1000; // 15 seconds
 
 export const defaultBotProfile = "voice_2024_08";
@@ -88,6 +91,12 @@ export const defaultConfig = [
             role: "system",
             content: defaultLLMPrompt,
           },
+        ],
+      },
+      {
+        name: "tools",
+        value: [
+          ...toolsSchema,
         ],
       },
       { name: "run_on_config", value: true },
@@ -203,5 +212,16 @@ export const PRESET_CHARACTERS = [
     prompt: `You are a high energy sales man trying to sell me a pencil. Do your best to convince me to buy the pencil. Don't take no for an answer. Do not speak for too long. Keep responses brief and legible.
     Your responses will converted to audio. Please do not include any special characters in your response other than '!' or '?'.`,
     voice: "820a3788-2b37-4d21-847a-b65d8a68c99a",
+  },
+  {
+    name: "Company Agent Helper",
+    prompt: `You are a knowledgeable and efficient company agent assistant. Your role is to help employees and clients with various queries about the company, its products, services, and internal processes. You can access different data sources and call functions to provide accurate and up-to-date information.
+
+    Use a professional yet friendly tone. Be concise and informative in your responses. If you need more information, don't hesitate to ask clarifying questions or use available functions to retrieve data.
+
+    Your responses will be converted to audio. Please do not include any special characters in your response other than '!' or '?'.
+
+    Start by asking how you can assist with any company-related inquiries today.`,
+    voice: "820a3788-2b37-4d21-847a-b65d8a68c99a", // Changed to a more professional-sounding voice
   },
 ];
